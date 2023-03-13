@@ -1,25 +1,31 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: Research engineer, PhD
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image: portrait.jpg
+  image_circular: true # crops the image to make it circular
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>IGARUN</p>
+    <p>Chemin de la Censive du Tertre</p>
+    <p>44312 Nantes, France</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I currently work as a research engineer for [OR2C](https://or2c.univ-nantes.fr), a regional observatory on coastal risk management where I contribute to GIS data management, analysis, and to web application development.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I am also associate researcher to [Centre François Viète](https://cfv.univ-nantes.fr). I’m interested in citizen sciences, and contribute to a crowdsourcing project about *Comédie-Italienne* (XVIII<sup>th</sup> century). I also investigate epistemology issues related to data processing in digital humanities projects.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I graduated from École Centrale de Nantes, with a Master in engineering (mechanics and computer science), and a PhD in industrial engineering during which I specialized in knowledge management and data science for digital humanities.
+
+Scientific collaborations:
+- [Guillaume Raschia](http://web.polytech.univ-nantes.fr/navigation/raschia-guillaume-4030.kjsp), LS2N UMR CNRS 6004, DUKE team
+- [Florent Laroche](https://www.ls2n.fr/annuaire/Florent%20LAROCHE/), LS2N UMR CNRS 6004, IS3P team.
+- [Françoise Rubellin](http://lamo.univ-nantes.fr/_Francoise-Rubellin_), LAMO EA 4276
+- [Pierre Teissier](https://www.univ-nantes.fr/version-francaise/pierre-teissier-647077.kjsp), CFV EA 1161
