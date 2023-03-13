@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://benjaminh.github.io//feed.xml" rel="self" type="application/atom+xml"/><link href="https://benjaminh.github.io//" rel="alternate" type="text/html" hreflang="en"/><updated>2023-03-13T16:45:09+00:00</updated><id>https://benjaminh.github.io//feed.xml</id><title type="html">blank</title><subtitle>Personal website of Benjamin Hervy </subtitle><entry><title type="html">Using custom projection with OpenLayers 6</title><link href="https://benjaminh.github.io//blog/2022/openlayers-proj/" rel="alternate" type="text/html" title="Using custom projection with OpenLayers 6"/><published>2022-02-03T00:00:00+00:00</published><updated>2022-02-03T00:00:00+00:00</updated><id>https://benjaminh.github.io//blog/2022/openlayers-proj</id><content type="html" xml:base="https://benjaminh.github.io//blog/2022/openlayers-proj/"><![CDATA[<p>Using <a href="https://openlayers.org/">OpenLayers</a> library can be challenging for many reasons, one of them being the number of ways it can be integrated into your application depending on your framework. And there are so many versions on the web it can be difficult to search for appropriate examples or help in debugging.</p> <p>Besides, GIS is an exciting domain yet also challenging, especially when combined with web development. Managing data sources in different <a href="https://en.wikipedia.org/wiki/Spatial_reference_system">spatial reference systems</a> to display them in a web page is an interesting subject to discuss. For example, OpenLayers 6 embeds <code class="language-plaintext highlighter-rouge">EPSG:3857</code> (WGS84/Pseudo-Mercator projected system) and <code class="language-plaintext highlighter-rouge">EPSG:4326</code> (WGS 84 geographic system) systems only so you have to get your hands a bit dirty if you work with a custom projection system.</p> <p>Here, I demonstrate the display of some GeoJSON data in Lambert-93 coordinate system (<code class="language-plaintext highlighter-rouge">EPSG:2154</code>, used for Metropolitan France), the definition of this CRS using Proj4, and the integration with OpenLayers 6 in a vanilla JS script.</p> <p>The minimal HTML excerpt to load OpenLayers 6 and Proj4, while having a div to integrate map canvas:</p> <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"map"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/build/ol.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/css/ol.css"</span><span class="nt">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure> <p>And the vanilla JS script:</p> <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="code"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">Proj4js</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">Proj</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">proj4</span><span class="p">(</span><span class="nx">Proj4js</span><span class="p">.</span><span class="nx">defs</span><span class="p">[</span><span class="nx">code</span><span class="p">]);</span>
+    <span class="p">},</span>
+    <span class="na">defs</span><span class="p">:</span> <span class="nx">proj4</span><span class="p">.</span><span class="nx">defs</span><span class="p">,</span>
+    <span class="na">transform</span><span class="p">:</span> <span class="nx">proj4</span>
+<span class="p">};</span>
+      
+<span class="nx">proj4</span><span class="p">.</span><span class="nf">defs</span><span class="p">(</span><span class="dl">"</span><span class="s2">EPSG:2154</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">ol</span><span class="p">.</span><span class="nx">proj</span><span class="p">.</span><span class="nx">proj4</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="nx">proj4</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">lambert_proj</span> <span class="o">=</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">proj</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">EPSG:2154</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">geojsonObject</span> <span class="o">=</span> <span class="p">{</span>
+<span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">FeatureCollection</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">example_geojson</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">crs</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">properties</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">urn:ogc:def:crs:EPSG::2154</span><span class="dl">"</span> <span class="p">}</span> <span class="p">},</span>
+<span class="dl">"</span><span class="s2">features</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+<span class="p">{</span> <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Feature</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">properties</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">some_feature</span><span class="dl">"</span> <span class="p">},</span> <span class="dl">"</span><span class="s2">geometry</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">MultiPolygon</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">coordinates</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="mf">368318.11475041200174</span><span class="p">,</span> <span class="mf">6591643.885249564424157</span> <span class="p">],</span> <span class="p">[</span> <span class="mf">368312.363392476399895</span><span class="p">,</span> <span class="mf">6591649.636607498861849</span> <span class="p">],</span> <span class="p">[</span> <span class="mf">368319.94</span><span class="p">,</span> <span class="mf">6591649.629999992437661</span> <span class="p">],</span> <span class="p">[</span> <span class="mf">368319.589999999618158</span><span class="p">,</span> <span class="mf">6591648.559999990276992</span> <span class="p">],</span> <span class="p">[</span> <span class="mf">368318.11475041200174</span><span class="p">,</span> <span class="mf">6591643.885249564424157</span> <span class="p">]</span> <span class="p">]</span> <span class="p">]</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span>
+<span class="p">]};</span>
+
+<span class="kd">var</span> <span class="nx">features</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nc">GeoJSON</span><span class="p">().</span><span class="nf">readFeatures</span><span class="p">(</span><span class="nx">geojsonObject</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">dataProjection</span><span class="p">:</span> <span class="nx">lambert_proj</span><span class="p">,</span>
+  <span class="na">featureProjection</span><span class="p">:</span> <span class="dl">'</span><span class="s1">EPSG:3857</span><span class="dl">'</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">vectorSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nc">Vector</span><span class="p">({</span> <span class="na">features</span><span class="p">:</span> <span class="nx">features</span> <span class="p">});</span>
+<span class="kd">var</span> <span class="nx">vectorLayer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nc">Vector</span><span class="p">({</span>
+  <span class="na">source</span><span class="p">:</span> <span class="nx">vectorSource</span><span class="p">,</span>
+  <span class="na">style</span><span class="p">:</span> <span class="nf">function </span><span class="p">(</span><span class="nx">feature</span><span class="p">,</span> <span class="nx">resolution</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nc">Style</span><span class="p">({</span>
+    <span class="na">stroke</span><span class="p">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nc">Stroke</span><span class="p">({</span>
+      <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">black</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">width</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">}),</span>
+    <span class="na">fill</span><span class="p">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nc">Fill</span><span class="p">({</span>
+      <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rgba(255, 255, 0, 0.1)</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nc">Map</span><span class="p">({</span>
+  <span class="na">target</span><span class="p">:</span> <span class="dl">'</span><span class="s1">map</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">layers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nc">Tile</span><span class="p">({</span> <span class="na">source</span><span class="p">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nc">OSM</span><span class="p">()</span> <span class="p">}),</span>
+    <span class="nx">vectorLayer</span>
+  <span class="p">],</span>
+  <span class="na">view</span><span class="p">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nc">View</span><span class="p">({</span>
+    <span class="na">projection</span><span class="p">:</span> <span class="dl">"</span><span class="s2">EPSG:3857</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="na">zoom</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></figure> <p>Some insights about this piece of code:</p> <ul> <li>lines 1-7 provide a wrapper for Proj4 declaration</li> <li>lines 9 and 10 are mandatory (omitting line 10 is a frequent mistake) to define <strong>and</strong> register the custom projection</li> <li>once defined and registered, one can access the new projection by calling the string code, here <code class="language-plaintext highlighter-rouge">EPSG:2154</code>, as demonstrated on line 12</li> <li><code class="language-plaintext highlighter-rouge">geojsonObject</code> is a GeoJSON formatted string with a single feature, provided as a matter of example</li> <li>lines 22 to 25 are important: <code class="language-plaintext highlighter-rouge">geojsonObject</code> features are read by specifying <code class="language-plaintext highlighter-rouge">dataProjection</code> (i.e. input data projection system, here : <code class="language-plaintext highlighter-rouge">EPSG:2154</code>), and <strong>reprojecting on the fly</strong> to a destination CRS specified using <code class="language-plaintext highlighter-rouge">featureProjection</code> (here <code class="language-plaintext highlighter-rouge">EPSG:3857</code>)</li> <li>features are then loaded as a vector layer using basic OpenLayers methods (lines 27 to 41)</li> <li>finally, the map and view are instantiated while specifying the view projection, here <code class="language-plaintext highlighter-rouge">EPSG:3857</code>. The CRS defined here <strong>must</strong> be the same as the one declared in <code class="language-plaintext highlighter-rouge">featureProjection</code> above.</li> </ul> <p><em>Note</em>: one can test the same minimal example without using reprojection on the fly. Then, the view projection must be set as <code class="language-plaintext highlighter-rouge">lambert_proj</code> (aka <code class="language-plaintext highlighter-rouge">EPSG:2154</code>), and <code class="language-plaintext highlighter-rouge">featureProjection</code> can be omitted.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="openlayers"/><category term="SIG"/><summary type="html"><![CDATA[A tutorial when struggling with OpenLayers and Lambert-93 projected data.]]></summary></entry></feed>
