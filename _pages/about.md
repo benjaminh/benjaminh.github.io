@@ -8,18 +8,18 @@ profile:
   align: right
   image: portrait.jpg
   image_circular: true # crops the image to make it circular
-  address: >
+  more_info: >
     <p>IGARUN</p>
     <p>Chemin de la Censive du Tertre</p>
     <p>44312 Nantes, France</p>
 
-news: true  # includes a list of news items
+news: false  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I currently work as a research engineer for [OR2C](https://or2c.univ-nantes.fr), a regional observatory on coastal risk management where I contribute to GIS data management, analysis, and to web application development.
+I currently work as a research engineer for [OR2C](https://or2c.univ-nantes.fr), a regional observatory on coastal risk management where I contribute to GIS data management, data analysis with ML/DL, and to web application development.
 
 I am also associate researcher to [Centre François Viète](https://cfv.univ-nantes.fr). I’m interested in citizen sciences, and contribute to a crowdsourcing project about *Comédie-Italienne* (XVIII<sup>th</sup> century). I also investigate epistemology issues related to data processing in digital humanities projects.
 
