@@ -1,14 +1,15 @@
 ---
 layout: page
 permalink: /teaching/
-title: Teaching
-description: Some info about the courses I teach/taught.
+title: teaching
+description: Course materials, schedules, and resources for classes taught.
 nav: true
-nav_order: 5
+nav_order: 6
+calendar: true
 ---
 
-- Since 2018: lesson at École Centrale (INPACT option) on Digital Humanities with a focus on data management and processing.
-- Since 2016: lessons and practicals at Polytech Nantes for M2 students in Web of Data. Keywords: Semantic Web, RDF, RDFS, SPARQL
-- 2015-2017: lessons and practicals at the University of Angers for 2nd year students in Master “Libraries”. Keywords: XML, XSL, Databases, Digital document management, Dublin Core, Semantic Web
-- 2011-2014: lessons and practicals at the ECN for 1st and 3rd year students (bac+3, bac+5). Keywords: Information systems, Databases, SQL
-- 2011-2014: projects supervision of 1st and 2nd year students (bac+3,bac+4) and internships in computer science (database, geographical information system) and mechanical engineering (CAD, virtual reality).
+This page displays a collection of courses with detailed schedules, materials, and resources. You can organize your courses by years, terms, or topics.
+
+{% include calendar.liquid calendar_id='test@gmail.com' timezone='Asia/Shanghai' %}
+
+{% include courses.liquid %}

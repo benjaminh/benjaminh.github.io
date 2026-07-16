@@ -1,97 +1,166 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+cv:
+  name: Benjamin Hervy
+  label: Research Engineer
+  email: benjamin.hervy@univ-nantes.fr
+  location: Nantes, France
+  image: ""
+  summary: 
 
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+  social_networks:
+    - network: GitHub
+      username: benjaminh
+    - network: ResearchGate
+      username: Benjamin-Hervy
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+  address:
+    street: Chemin de la Censive du Tertre
+    city: Nantes
+    region:
+    postalCode: 44312
+    countryCode: FR
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+  sections:
+    Education:
+      - institution: École Centrale Nantes
+        location: Nantes, France
+        url: https://www.ec-nantes.fr/
+        area: Engineering, Mechanics
+        studyType: PhD
+        start_date: 2011
+        end_date: 2014
+        score: ""
+        courses: 
+        highlights:
 
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
+      - institution: École Centrale Nantes
+        location: Nantes, France
+        area: Engineering, Mechanics
+        studyType: Engineer diploma, Master of Science
+        start_date: 2008
+        end_date: 2011
+        highlights:
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    Experience:
+      - company: LETG, Nantes University
+        position: Research Engineer
+        start_date: 2019
+        end_date: /
+        summary: Software engineering, Data science, Data management
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+      - company: Mazedia
+        position: Research scientist
+        start_date: 2018
+        end_date: 2019
+        summary: Cultural heritage, Project management, Augmented Reality applications
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
-      items: 
-        - Max Planck Medal
+      - company: LS2N, Polytech Nantes
+        position: Postdoc
+        start_date: 2017
+        end_date: 2018
+        summary: ETL, crowdsourcing, historical databases, data science
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
+      - company: MSH, Angers University
+        position: Research Engineer
+        start_date: 2015
+        end_date: 2017
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+      - company: Nantes History Museum, Château des ducs de Bretagne
+        position: PhD candidate, Project manager
+        start_date: 2011
+        end_date: 2014
+        summary: cultural heritage, 3D digitization, archives, museography, project management, augmented reality
+
+    Publications:
+      - title: Outil d'analyse automatique de profils de plage
+        authors:
+          - Benjamin Hervy
+          - Martin Juigner
+        publisher: Paralia
+        releaseDate: 2022-10
+        url: https://hal.science/hal-03857017
+  
+      - title: Humanités numériques et archives orales, cartographies d'une mémoire collective sur les matériaux
+        authors:
+          - Pierre Teissier
+          - Matthieu Quantin
+          - Benjamin Hervy
+        publisher: Cahiers Francois Viète
+        releaseDate: 2018-03
+        url: https://halshs.archives-ouvertes.fr/halshs-01784248
+
+      - title: Crowdsourcing-based Annotation of the Accounting Registers of the Italian Comedy
+        authors:
+          - Adeline Granet 
+          - Benjamin Hervy
+          - Geoffrey Roman Jimenez
+          - Marouane Hachicha
+          - Emmanuel Morin
+          - Harold Mouchère
+          - Solen Quiniou
+          - Guillaume Raschia
+          - Francoise Rubellin
+          - Christian Viard-Gaudin
+        publisher: 11th International Conference on Language Resources and Evaluation (LREC)
+        releaseDate: 2018-05-01
+        url: https://hal.archives-ouvertes.fr/hal-01819079
+      
+      - title: Framework for historical knowledge management in museology
+        authors:
+          - Benjamin Hervy
+          - Florent Laroche
+          - Alain Bernard
+          - Jean-Louis Kerouanton
+        publisher: International Journal of Product Lifecycle Management
+        releaseDate: 2017-03-01
+        url: https://hal.archives-ouvertes.fr/hal-01541077
+
+    Skills:
+      - name: Software engineering
+        level: Master
+        icon: fa-solid fa-hashtag
+        keywords: "SQL/NoSQL Databases, Python (Django/Flask) for web development, Front/Visualization (Vue, D3, Plotly), git, Docker"
+
+      - name: Data Science
+        level: Master
+        icon: fa-solid fa-hashtag
+        keywords: "Numpy, Pandas, Scikit-learn, Tensorflow"
+
+    Languages:
+      - name: French
+        summary: "Native speaker"
+
+      - name: English
+        summary: "Professional proficiency"
+
+    Interests:
+      - name: Computer science
+        icon: fa-solid fa-tag
+        keywords: "Software engineering, data science, data visualization"
+
+      - name: Digital humanities
+        icon: fa-solid fa-tag
+        keywords: "Cultural and industrial heritage, 3D digitization, museology"
+
+    Certificates:
+      - name: CATS (drone professional pilot)
+        date: 2025-05-21
+        issuer: DGAC (French Civil Aviation Authority)
+        icon:
+
+      - name: Machine Learning
+        date: 2021-01-01
+        issuer: Coursera - Stanford University
+        icon: fa-solid fa-laptop
+
+    References:
+      - name: Professor Marc Robin
+        icon: fa-solid fa-thumbtack
+
+      - name: Professor Guillaume Raschia
+        icon: fa-solid fa-thumbtack
+
+      - name: Professor Pierre Teissier
+        icon: fa-solid fa-thumbtack
+
+      - name: Professor Florent Laroche
+        icon: fa-solid fa-thumbtack

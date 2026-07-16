@@ -11,15 +11,15 @@ During a post-doc at [Polytech Nantes](https://polytech.univ-nantes.fr/), I work
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/Recital/recital-home.png" title="Homepage of the Recital website" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/Recital/recital-home.png" title="Homepage of the Recital website" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/Recital/recital-example.png" title="Screenshot of an accounting daily page to be labeled and transcribed" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/Recital/recital-example.png" title="Screenshot of an accounting daily page to be labeled and transcribed" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/Recital/recital-activity.png" title="Figure of the workers activity on Recital platform since the launch in 2017" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/Recital/recital-activity.png" title="Figure of the workers activity on Recital platform since the launch in 2017" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -30,10 +30,10 @@ Under the supervision of Guillaume Raschia, I investigated the ETL (Extract-Tran
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/Recital/recital-dashboard-1.png" title="Screenshot of the Recital dashboard with the final visualization" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/Recital/recital-dashboard-1.png" title="Screenshot of the Recital dashboard with the final visualization" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/Recital/recital-dashboard-2.png" title="Screenshot of the Recital dashboard with statistics and faceting search" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/projects/Recital/recital-dashboard-2.png" title="Screenshot of the Recital dashboard with statistics and faceting search" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
