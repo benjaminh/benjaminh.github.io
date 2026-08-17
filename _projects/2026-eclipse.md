@@ -34,7 +34,7 @@ Below is a description of the setup used to capture this event:
 - Refractor: TSOptics TSMPT60 \| Focal ratio $$f/6$$
 - Accessories: EuroEMC AstroSolar filter (**Do not, EVER, look at the sun without appropriate filter**) \| UV/IR Omegon filter
 - Camera: ZWO ASI 585MC (Sensor size: 11.13 × 6.26 mm, Full resolution: 3840×2160 px, Pixel width: 2.9 $$\mu m$$)
-- Capture software: ASICap
+- Capture software: ASICap (__Thanks to Stéphane Malabeuf for the laptop and the storage device 😊__)
 
 I use an equatorial mount without any GoTo or motorization. Therefore, I rely on manual tracking and the drift method to capture images:
 
