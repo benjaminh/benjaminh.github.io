@@ -124,7 +124,7 @@
     <span class="na">zoom</span><span class="p">:</span> <span class="mi">2</span>
   <span class="p">})</span>
 <span class="p">});</span>
-</pre></td> </tr></tbody></table></code></pre></figure> <p>Some insights about this piece of code:</p> <ul> <li>lines 1-7 provide a wrapper for Proj4 declaration</li> <li>lines 9 and 10 are mandatory (omitting line 10 is a frequent mistake) to define <strong>and</strong> register the custom projection</li> <li>once defined and registered, one can access the new projection by calling the string code, here <code class="language-plaintext highlighter-rouge">EPSG:2154</code>, as demonstrated on line 12</li> <li> <code class="language-plaintext highlighter-rouge">geojsonObject</code> is a GeoJSON formatted string with a single feature, provided as a matter of example</li> <li>lines 22 to 25 are important: <code class="language-plaintext highlighter-rouge">geojsonObject</code> features are read by specifying <code class="language-plaintext highlighter-rouge">dataProjection</code> (i.e. input data projection system, here : <code class="language-plaintext highlighter-rouge">EPSG:2154</code>), and <strong>reprojecting on the fly</strong> to a destination CRS specified using <code class="language-plaintext highlighter-rouge">featureProjection</code> (here <code class="language-plaintext highlighter-rouge">EPSG:3857</code>)</li> <li>features are then loaded as a vector layer using basic OpenLayers methods (lines 27 to 41)</li> <li>finally, the map and view are instantiated while specifying the view projection, here <code class="language-plaintext highlighter-rouge">EPSG:3857</code>. The CRS defined here <strong>must</strong> be the same as the one declared in <code class="language-plaintext highlighter-rouge">featureProjection</code> above.</li> </ul> <p><em>Note</em>: one can test the same minimal example without using reprojection on the fly. Then, the view projection must be set as <code class="language-plaintext highlighter-rouge">lambert_proj</code> (aka <code class="language-plaintext highlighter-rouge">EPSG:2154</code>), and <code class="language-plaintext highlighter-rouge">featureProjection</code> can be omitted.</p> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Benjamin Hervy. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: July 16, 2026. </div> </footer> <script>
+</pre></td> </tr></tbody></table></code></pre></figure> <p>Some insights about this piece of code:</p> <ul> <li>lines 1-7 provide a wrapper for Proj4 declaration</li> <li>lines 9 and 10 are mandatory (omitting line 10 is a frequent mistake) to define <strong>and</strong> register the custom projection</li> <li>once defined and registered, one can access the new projection by calling the string code, here <code class="language-plaintext highlighter-rouge">EPSG:2154</code>, as demonstrated on line 12</li> <li> <code class="language-plaintext highlighter-rouge">geojsonObject</code> is a GeoJSON formatted string with a single feature, provided as a matter of example</li> <li>lines 22 to 25 are important: <code class="language-plaintext highlighter-rouge">geojsonObject</code> features are read by specifying <code class="language-plaintext highlighter-rouge">dataProjection</code> (i.e. input data projection system, here : <code class="language-plaintext highlighter-rouge">EPSG:2154</code>), and <strong>reprojecting on the fly</strong> to a destination CRS specified using <code class="language-plaintext highlighter-rouge">featureProjection</code> (here <code class="language-plaintext highlighter-rouge">EPSG:3857</code>)</li> <li>features are then loaded as a vector layer using basic OpenLayers methods (lines 27 to 41)</li> <li>finally, the map and view are instantiated while specifying the view projection, here <code class="language-plaintext highlighter-rouge">EPSG:3857</code>. The CRS defined here <strong>must</strong> be the same as the one declared in <code class="language-plaintext highlighter-rouge">featureProjection</code> above.</li> </ul> <p><em>Note</em>: one can test the same minimal example without using reprojection on the fly. Then, the view projection must be set as <code class="language-plaintext highlighter-rouge">lambert_proj</code> (aka <code class="language-plaintext highlighter-rouge">EPSG:2154</code>), and <code class="language-plaintext highlighter-rouge">featureProjection</code> can be omitted.</p> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/solar-eclipse-astrophoto/">2026 Solar Eclipse photograph</a> </li> </ul> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Benjamin Hervy. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: August 17, 2026. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
@@ -177,7 +177,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-using-custom-projection-with-openlayers-6",
+        },{id: "post-2026-solar-eclipse-photograph",
+        
+          title: "2026 Solar Eclipse photograph",
+        
+        description: "First attempt at capturing the Sun during 2026 total eclipse",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/solar-eclipse-astrophoto/";
+          
+        },
+      },{id: "post-using-custom-projection-with-openlayers-6",
         
           title: "Using custom projection with OpenLayers 6",
         
@@ -193,6 +204,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
+            },},{id: "projects-2026-total-solar-eclipse",
+          title: '2026 Total Solar Eclipse',
+          description: "First attempt at capturing the Sun during 2026 total eclipse",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2026-eclipse/";
             },},{id: "projects-nantes1900",
           title: 'Nantes1900',
           description: "My PhD project for Nantes History Museum",
